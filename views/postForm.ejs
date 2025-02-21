@@ -1,0 +1,77 @@
+<%- include('partials/head') %>
+<title>AKT BlogAPP - Post Form</title>
+</head>
+<body>
+    <div class="container">
+        <%- include('partials/header') %>
+    </div>
+<!-- main start -->
+<main class="container">
+    <div class="row g-5">
+        <div class="col-md-12 p-3">
+            <p>
+                <a class="btn btn-sm btn-secondary" href="/">Startseite</a>
+            </p>
+            <h1><%= title %></h1>
+            <form action="" method="POST">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th># <%= post?.id %></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kategorie</td>
+                            <td>
+                                <select name="blogCategoryId" class="form-select">
+                                    <% categories.forEach(category => { %>
+                                     <option value="<%= category.id %>" <%= category.id == post?.blogCategoryId ? 'selected' : '' %>><%= category.name %></option>
+                                    <% }) %>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Titel</td>
+                            <td><input type="text" name="title" required class="form-control" value="<%= post?.title %>"></td>
+                        </tr>
+                        <tr>
+                            <td>Inhalt</td>
+                            <td>
+                                <textarea id='textEditor' name="content" class="form-control">
+                                    <%= post?.content %>
+                                </textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Veröffentlicht</td>
+                            <td>
+                                <select name="published" class="form-select">
+                                    <option value="0" <%= post?.published ? '' : 'selected' %>>Nein</option>
+                                    <option value="1" <%= post?.published ? 'selected' : '' %>>Ja</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <!-- <tr>
+                            <input type="hidden" name="userId" value="<%#= user.id %>">
+                        </tr> -->
+                        <!-- <tr>
+                            <td>Created</td>
+                            <td>2022-10-10</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <p>
+                    <button class="btn btn-success" type="submit">Einreichen</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</main>
+<!-- main end -->
+<%- include('partials/footer') %>
+<script src="/libs/tinymce/tinymce.min.js"></script>
+<script src="/assets/tinymce-config.js"></script>
+</body>
+</html>
