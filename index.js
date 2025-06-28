@@ -6,6 +6,12 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
 
+// "views/assets" klasörünü statik olarak sunun:
+app.use('/assets', express.static('views/assets'));
+
+// VEYA daha iyi yöntem: "public" klasörü kullanın:
+app.use(express.static('public'));
+
 app.use(express.json());
 require("./src/configs/dbConnection");
 /* ------------------------------------------------------- */
