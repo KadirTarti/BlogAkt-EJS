@@ -12,7 +12,7 @@ const isAuth = require("../middlewares/isAuth")
 
 
 //! base route => /
-//* / anasayfayı viewe verdiğimiz için projemiz ayaga kalkdığında hatalı sayfa gelecektiir çünkü routeu bulamayacaktır. Çünkü /post şeklinde ayarlama yaptım. Bunun sebebi de ilerleyen süreçlerde yeni routelar eklenebilir diye. Bunun i,çin ana sayfay istek geldiğinde /post a yönlendirme yaptırabilirim:
+//* / anasayfayı viewe verdiğim için proje ayaga kalkdığında hatalı sayfa gelecektiir çünkü routeu bulamayacaktır. Çünkü /post şeklinde ayarlama yaptım. Bunun sebebi de ilerleyen süreçlerde yeni routelar eklenebilir diye. Bunun için ana sayfaya istek geldiğinde /post a yönlendirme yaptırabilirim:
 router.all('/', (req,res)=>{
   res.redirect('/post')
 })
